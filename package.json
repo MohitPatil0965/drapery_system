@@ -1,0 +1,9 @@
+{
+  "name": "TEST PROJECT",
+  "lockfileVersion": 3,
+  "requires": true,
+  "packages": {},
+  "dependencies": {
+    "yarn": "^1.22.22"
+  }
+}
