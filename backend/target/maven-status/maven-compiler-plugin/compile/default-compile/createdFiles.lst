@@ -1,5 +1,7 @@
 com\example\login\model\User$UserBuilder.class
+com\example\login\CorsConfig.class
 com\example\login\model\Product.class
+com\example\login\CorsConfig$1.class
 com\example\login\dto\RegisterRequest.class
 com\example\login\controller\AuthController.class
 com\example\login\model\User.class

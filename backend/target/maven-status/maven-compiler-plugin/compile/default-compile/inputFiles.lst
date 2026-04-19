@@ -16,3 +16,4 @@ E:\sampada\drapery_system\backend\src\main\java\com\example\login\repository\Use
 E:\sampada\drapery_system\backend\src\main\java\com\example\login\controller\ProductController.java
 E:\sampada\drapery_system\backend\src\main\java\com\example\login\model\Order.java
 E:\sampada\drapery_system\backend\src\main\java\com\example\login\security\JwtFilter.java
+E:\sampada\drapery_system\backend\src\main\java\com\example\login\CorsConfig.java
