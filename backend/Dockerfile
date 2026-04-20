@@ -1,28 +1,29 @@
-# Stage 1: Build
-FROM eclipse-temurin:17-jdk AS builder
+# Stage 1: Build (Maven)
+FROM maven:3.9.6-eclipse-temurin-17 AS builder
+
 WORKDIR /app
 
-# Copy Gradle files
-COPY gradlew .
-COPY gradle gradle
-COPY build.gradle settings.gradle ./
+# Copy pom.xml first
+COPY pom.xml .
+
+# Download dependencies
+RUN mvn dependency:go-offline
 
 # Copy source
 COPY src src
 
-RUN chmod +x gradlew
-
-# Build JAR
-RUN ./gradlew bootJar -x test
+# Build jar
+RUN mvn clean package -DskipTests
 
 # Stage 2: Run
 FROM eclipse-temurin:17-jre
+
 WORKDIR /app
 
-# Copy ANY jar (more flexible)
-COPY --from=builder /app/build/libs/*.jar app.jar
+# Copy jar
+COPY --from=builder /app/target/*.jar app.jar
 
-# Use Render port dynamically
+# Render uses dynamic port
 EXPOSE 8080
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
