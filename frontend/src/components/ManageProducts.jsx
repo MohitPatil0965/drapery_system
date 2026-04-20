@@ -138,7 +138,7 @@ export default function ManageProducts() {
                 <input required name="name" value={form.name} onChange={handleChange} className="input-field" placeholder="E.g. Wireless Mouse" />
               </div>
               <div className="input-group">
-                <label>Price ($)</label>
+                <label>Price (₹)</label>
                 <input required type="number" step="0.01" name="price" value={form.price} onChange={handleChange} className="input-field" placeholder="29.99" />
               </div>
             </div>
@@ -156,7 +156,7 @@ export default function ManageProducts() {
 
             <div className="form-row">
               <div className="input-group">
-                <label>Rental Price ($)</label>
+                <label>Rental Price (₹)</label>
                 <input type="number" step="0.01" name="rentalPrice" value={form.rentalPrice} onChange={handleChange} className="input-field" placeholder="15.00" />
               </div>
               <div className="input-group">
@@ -243,8 +243,8 @@ export default function ManageProducts() {
                       </td>
                       <td style={{ padding: '12px' }}>{p.category}</td>
                       <td style={{ padding: '12px' }}>
-                        <div>Buy: <span style={{ fontWeight: 'bold' }}>${p.price.toFixed(2)}</span></div>
-                        {p.rentalPrice && <div>Rent: <span style={{ fontWeight: 'bold' }}>${p.rentalPrice.toFixed(2)}</span></div>}
+                        <div>Buy: <span style={{ fontWeight: 'bold' }}>₹{p.price.toFixed(2)}</span></div>
+                        {p.rentalPrice && <div>Rent: <span style={{ fontWeight: 'bold' }}>₹{p.rentalPrice.toFixed(2)}</span></div>}
                       </td>
                       <td style={{ padding: '12px', fontSize: '12px', color: 'var(--text-muted)' }}>
                         <div>Size: {p.size}</div>

@@ -62,7 +62,7 @@ export default function ViewReports() {
             </div>
             <div className="stat-info">
               <span className="stat-title">Total Revenue</span>
-              <span className="stat-value">${totalRevenue.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+              <span className="stat-value">₹{totalRevenue.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
               <span className="stat-change" style={{ color: 'var(--success)' }}>+12.5% this month</span>
             </div>
           </div>
@@ -142,7 +142,7 @@ export default function ViewReports() {
                         {new Date(order.orderDate).toLocaleDateString()}
                       </td>
                       <td style={{ padding: '16px 12px', fontWeight: 'bold', color: 'var(--accent-gold)' }}>
-                        ${order.amount.toFixed(2)}
+                        ₹{order.amount.toFixed(2)}
                       </td>
                       <td style={{ padding: '16px 12px', fontSize: '12px', color: 'var(--text-muted)' }}>
                         {order.cardNumber}

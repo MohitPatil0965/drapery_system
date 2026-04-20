@@ -23,6 +23,9 @@ export default function Checkout() {
     cvv: ''
   });
 
+  const [returnDate, setReturnDate] = useState('');
+  const today = new Date().toISOString().split('T')[0];
+
   useEffect(() => {
     const fetchProduct = async () => {
       try {
@@ -49,13 +52,20 @@ export default function Checkout() {
     setSubmitting(true);
     setError('');
 
+    if (type === 'RENTAL' && !returnDate) {
+      setError('Please select a return date for your rental.');
+      setSubmitting(false);
+      return;
+    }
+
     try {
       const amount = type === 'RENTAL' ? product.rentalPrice : product.price;
       await api.createOrder({
         productId,
         type,
         amount,
-        cardNumber: cardForm.number
+        cardNumber: cardForm.number,
+        returnDate: type === 'RENTAL' ? returnDate : null
       });
       setCompleted(true);
       setTimeout(() => navigate('/dashboard'), 3000);
@@ -115,7 +125,7 @@ export default function Checkout() {
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '18px', fontWeight: 'bold', marginTop: '10px', paddingTop: '10px', borderTop: '1px solid var(--glass-border)' }}>
                 <span>Total Amount</span>
-                <span style={{ color: 'var(--accent-gold)' }}>${price?.toFixed(2)}</span>
+                <span style={{ color: 'var(--accent-gold)' }}>₹{price?.toFixed(2)}</span>
               </div>
             </div>
           </div>
@@ -129,6 +139,22 @@ export default function Checkout() {
             {error && <div className="alert alert-error" style={{ marginBottom: '20px' }}>{error}</div>}
 
             <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              {type === 'RENTAL' && (
+                <div className="input-group" style={{ padding: '15px', background: 'rgba(212, 175, 55, 0.05)', borderRadius: '10px', border: '1px dotted var(--accent-gold)' }}>
+                  <label style={{ color: 'var(--accent-gold)', fontWeight: 'bold' }}>Rental Return Date</label>
+                  <input 
+                    required 
+                    type="date" 
+                    min={today} 
+                    value={returnDate} 
+                    onChange={(e) => setReturnDate(e.target.value)} 
+                    className="input-field" 
+                    style={{ marginTop: '5px' }}
+                  />
+                  <p style={{ fontSize: '11px', color: 'var(--text-muted)', marginTop: '5px' }}>Please specify when you will return the items.</p>
+                </div>
+              )}
+
               <div className="input-group">
                 <label>Cardholder Name</label>
                 <input required name="name" value={cardForm.name} onChange={handleInputChange} className="input-field" placeholder="John Doe" />

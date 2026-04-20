@@ -42,13 +42,19 @@ public class OrderController {
         String cardNumber = orderData.get("cardNumber").toString();
         String last4 = cardNumber.length() >= 4 ? cardNumber.substring(cardNumber.length() - 4) : cardNumber;
 
-        Order order = Order.builder()
+        Order.OrderBuilder orderBuilder = Order.builder()
                 .user(user)
                 .product(product)
                 .type(orderData.get("type").toString())
                 .amount(Double.valueOf(orderData.get("amount").toString()))
-                .cardNumber("**** **** **** " + last4)
-                .build();
+                .cardNumber("**** **** **** " + last4);
+
+        if (orderData.get("returnDate") != null && !orderData.get("returnDate").toString().isEmpty()) {
+            java.time.LocalDateTime returnDate = java.time.LocalDateTime.parse(orderData.get("returnDate").toString() + "T00:00:00");
+            orderBuilder.returnDate(returnDate);
+        }
+
+        Order order = orderBuilder.build();
 
         return ResponseEntity.ok(orderRepository.save(order));
     }

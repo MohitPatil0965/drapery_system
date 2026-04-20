@@ -4,6 +4,7 @@ import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import ProtectedRoute from './components/ProtectedRoute';
 import ManageProducts from './components/ManageProducts';
+import ManageUsers from './components/ManageUsers';
 import Checkout from './components/Checkout';
 import ViewReports from './components/ViewReports';
 import Register from './components/Register';
@@ -31,6 +32,14 @@ function App() {
           element={
             <ProtectedRoute>
               <ManageProducts />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/users"
+          element={
+            <ProtectedRoute>
+              <ManageUsers />
             </ProtectedRoute>
           }
         />

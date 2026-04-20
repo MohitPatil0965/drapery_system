@@ -15,7 +15,7 @@ export default function Dashboard() {
 
   const adminWidgets = [
     { icon: <Users size={22} />, title: 'Total Users', value: '1,248', change: '+12%', color: '#7c3aed' },
-    { icon: <BarChart3 size={22} />, title: 'Revenue', value: '$48,320', change: '+8.5%', color: '#2563eb' },
+    { icon: <BarChart3 size={22} />, title: 'Revenue', value: '₹48,320', change: '+8.5%', color: '#2563eb' },
     { icon: <ShoppingBag size={22} />, title: 'Orders', value: '394', change: '+5%', color: '#db2777' },
     { icon: <Star size={22} />, title: 'Ratings', value: '4.9', change: '+0.1', color: '#f59e0b' },
   ];
@@ -23,14 +23,14 @@ export default function Dashboard() {
   const customerWidgets = [
     { icon: <ShoppingBag size={22} />, title: 'My Orders', value: '12', change: 'Active', color: '#10b981' },
     { icon: <Star size={22} />, title: 'Wishlist', value: '7', change: 'Items', color: '#7c3aed' },
-    { icon: <BarChart3 size={22} />, title: 'Total Spent', value: '$1,240', change: 'This year', color: '#2563eb' },
+    { icon: <BarChart3 size={22} />, title: 'Total Spent', value: '₹1,240', change: 'This year', color: '#2563eb' },
     { icon: <Shield size={22} />, title: 'Reward Points', value: '3,500', change: 'Points', color: '#f59e0b' },
   ];
 
   const widgets = isAdmin ? adminWidgets : customerWidgets;
 
   const adminActions = [
-    { icon: <Users size={18} />, label: 'Manage Users', desc: 'View, update or remove user accounts', path: '#' },
+    { icon: <Users size={18} />, label: 'Manage Users', desc: 'View, update or remove user accounts', path: '/admin/users' },
     { icon: <ShoppingBag size={18} />, label: 'Manage Products', desc: 'Add, edit or delete products', path: '/admin/products' },
     { icon: <BarChart3 size={18} />, label: 'View Reports', desc: 'Detailed analytics and reports', path: '/admin/reports' },
     { icon: <Settings size={18} />, label: 'System Settings', desc: 'Configure platform settings', path: '#' },

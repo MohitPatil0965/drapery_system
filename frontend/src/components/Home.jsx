@@ -146,13 +146,13 @@ export default function Home() {
                       {product.isPurchasable && (
                         <div style={{ display: 'flex', flexDirection: 'column' }}>
                           <span style={{ fontSize: '10px', textTransform: 'uppercase', color: 'var(--text-muted)' }}>Buy</span>
-                          <span className="product-price" style={{ color: 'var(--accent-gold)' }}>${(product.price || 0).toFixed(2)}</span>
+                          <span className="product-price" style={{ color: 'var(--accent-gold)' }}>₹{(product.price || 0).toFixed(2)}</span>
                         </div>
                       )}
                       {product.isRentable && (
                         <div style={{ display: 'flex', flexDirection: 'column', textAlign: 'right' }}>
                           <span style={{ fontSize: '10px', textTransform: 'uppercase', color: 'var(--text-muted)' }}>Rent</span>
-                          <span className="product-price" style={{ color: 'var(--text-primary)' }}>${(product.rentalPrice || 0).toFixed(2)}<span style={{ fontSize: '10px', fontWeight: 'normal' }}>/day</span></span>
+                          <span className="product-price" style={{ color: 'var(--text-primary)' }}>₹{(product.rentalPrice || 0).toFixed(2)}<span style={{ fontSize: '10px', fontWeight: 'normal' }}>/day</span></span>
                         </div>
                       )}
                     </div>

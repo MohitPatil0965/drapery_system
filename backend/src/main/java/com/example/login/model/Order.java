@@ -40,4 +40,6 @@ public class Order {
 
     @Builder.Default
     private String status = "COMPLETED";
+
+    private java.time.LocalDateTime returnDate;
 }

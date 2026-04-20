@@ -93,4 +93,24 @@ export const api = {
     if (!response.ok) throw new Error('Failed to fetch reports');
     return response.json();
   },
+
+  getUsers: async () => {
+    const response = await fetch(`${API_BASE_URL}/users`, {
+      headers: api.getAuthHeaders(),
+    });
+    if (!response.ok) throw new Error('Failed to fetch users');
+    return response.json();
+  },
+
+  toggleBlockUser: async (id) => {
+    const response = await fetch(`${API_BASE_URL}/users/${id}/toggle-block`, {
+      method: 'POST',
+      headers: api.getAuthHeaders(),
+    });
+    if (!response.ok) {
+      const text = await response.text();
+      throw new Error(text || 'Failed to update user status');
+    }
+    return response.text();
+  },
 };
